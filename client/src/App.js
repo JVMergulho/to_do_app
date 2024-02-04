@@ -27,19 +27,24 @@ function App() {
   }
 
   const addTodo = async() => {
-    const data = await fetch(API_BASE + "/todo/create", {
-      method: "POST",
-      headers: {
-        "content-type":"application/json"
-      },
-      body: JSON.stringify({
-        text: newTodo
-      })
-    }).then(res => res.json())
 
-    setTodos([...todos, data])
+    if(newTodo !== ""){
+      const data = await fetch(API_BASE + "/todo/create", {
+        method: "POST",
+        headers: {
+          "content-type":"application/json"
+        },
+        body: JSON.stringify({
+          text: newTodo
+        })
+      }).then(res => res.json())
+  
+      setTodos([...todos, data])
+      setNewTodo("")
+    }
+
     setPopupactivate(false)
-    setNewTodo("")
+    
   }
 
   const closePopup = () => {
