@@ -31,7 +31,7 @@ app.post('/todo/create', (req, res) => {
     res.json(todo)
 })
 
-app.put('/todo/complete/:id', async (req, res) => {
+app.get('/todo/complete/:id', async (req, res) => {
     const todo = await Todo.findById(req.params.id)
 
     todo.complete = !todo.complete
@@ -40,7 +40,7 @@ app.put('/todo/complete/:id', async (req, res) => {
     res.json(todo)
 })
 
-app.delete('/todo/:id', async (req, res) => {
+app.delete('/todo/delete/:id', async (req, res) => {
     const result = await Todo.findByIdAndDelete(req.params.id)
 
     res.json(result)
