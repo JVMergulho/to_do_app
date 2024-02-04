@@ -1,0 +1,88 @@
+:root {
+  --primary: #0f2480;
+  --secondary: #9e3db9;
+  --dark: #26352c;
+  --dark-alt: #354a3e;
+  --light: #ffffff;
+  --light-alt: #759383;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+body {
+  background-color: var(--dark-alt);
+  color: var(--light);
+}
+
+.App { 
+  padding: 32 px;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 16px;
+  color: var(--light-alt)
+}
+
+.todo {
+  position: relative;
+  background-color: var(--dark);
+  padding: 16px;
+  border-radius: 16px;
+  display: center;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.todo:hover {
+  opacity: 0.7;
+}
+
+.todo .checkbox{
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
+  border-radius: 50%;
+  background-color: var(--dark-alt);
+  transition: 0.5s;
+}
+
+.todo.is-complete .checkbox{
+  background-image: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+.todo.is-complete .text{
+  text-decoration: line-through;
+}
+
+.todo .delete{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px;
+
+  width: 24px;
+  background-color: rgb(169, 55, 55);
+  border-radius: 50%;
+  color: var(--light);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
