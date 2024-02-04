@@ -60,10 +60,13 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App test">
       <h1>Bem vindo</h1>
-      <h4>Suas Tarefas</h4>
       <div className="todos">
+
+        <div className="title-tasks">
+          <h4>Suas Tarefas</h4>
+        </div>
 
         {todos.map(todo => (
           <div className={"todo " + (todo.complete ? "is-complete" : "")} 
@@ -88,11 +91,11 @@ function App() {
           </div>
           <div className="content">
             <h3>Crie uma tarefa</h3>
-            <input type="text" className="add-todo" 
+            <input type="text" className="add-todo-input" 
             value={newTodo}
             onChange={e => setNewTodo(e.target.value)}/>
           </div>
-          <div className="button" onClick={addTodo}>Criar</div>
+          <div className="button-create" onClick={addTodo}>Criar</div>
         </div>
       ): ''}
     </div>

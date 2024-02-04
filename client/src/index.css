@@ -1,10 +1,11 @@
 :root {
-  --primary: #0f2480;
+  --primary: #4533a2;
   --secondary: #9e3db9;
-  --dark: #26352c;
-  --dark-alt: #354a3e;
-  --light: #ffffff;
-  --light-alt: #759383;
+  --dark: #212833;
+  --dark-alt: #2f3949;
+  --light: #e8f1ff; 
+  --light-alt: #8a99b2;
+  --red: rgb(169, 55, 55);
 }
 
 * {
@@ -20,7 +21,7 @@ body {
 }
 
 .App { 
-  padding: 32 px;
+  padding: 50px;
 }
 
 h1 {
@@ -37,21 +38,29 @@ h4 {
   color: var(--light-alt)
 }
 
+.todos{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
 .todo {
   position: relative;
   background-color: var(--dark);
   padding: 16px;
   border-radius: 16px;
+
+  margin-bottom: 16px;
   display: center;
   cursor: pointer;
   transition: 0.5s;
-  margin-bottom: 16px;
   display: flex;
   align-items: center;
+  box-shadow: 0px 2px 8px rgb(38, 39, 38);
 }
 
 .todo:hover {
   opacity: 0.7;
+  box-shadow: none;
 }
 
 .todo .checkbox{
@@ -59,7 +68,7 @@ h4 {
   height: 20px;
   margin-right: 16px;
   border-radius: 50%;
-  background-color: var(--dark-alt);
+  background-color: var(--light-alt);
   transition: 0.5s;
 }
 
@@ -76,11 +85,12 @@ h4 {
   top: 50%;
   transform: translateY(-50%);
   right: 16px;
+  color: white;
 
   width: 24px;
-  background-color: rgb(169, 55, 55);
+  height: 24px;
+  background-color: var(--red);
   border-radius: 50%;
-  color: var(--light);
 
   display: flex;
   align-items: center;
@@ -102,4 +112,65 @@ h4 {
   font-weight: 700;
   background-image: linear-gradient(to bottom, var(--primary), var(--secondary));
   cursor: pointer;
+  box-shadow: 0px 2px 8px rgb(38, 39, 38);
+}
+
+.popup{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  max-width: 400px;
+  background-color: #a2b1cb;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0px 2px 20px rgb(0, 0, 0);
+}
+
+.closePopup {
+  position: absolute;
+  color: var(--light);
+  width: 20px;
+  height: 20px;
+  top: 16px;
+  right: 16px;
+
+  cursor: pointer;
+  background-color: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.popup h3{
+  color: var(--dark-alt);
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.add-todo-input{
+  border: none;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 6px rgb(29, 30, 29);
+  margin-bottom: 16px;
+}
+
+.popup .button-create{
+  padding: 16px 32px;
+  background-image: linear-gradient(to bottom, var(--primary), var(--secondary));
+  display: inline-block;
+  border-radius: 16px;
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0px 2px 8px rgb(29, 30, 29);
 }
