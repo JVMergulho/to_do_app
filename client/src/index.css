@@ -86,3 +86,20 @@ h4 {
   align-items: center;
   justify-content: center;
 }
+
+.addPopup {
+  position: fixed;
+  bottom: 32px;
+  display: flex;
+  right: 32px;
+  align-items: center;
+  justify-content: center;
+  
+  width: 100px;
+  height: 64px;
+  border-radius: 10px;
+  font-size: 28px;
+  font-weight: 700;
+  background-image: linear-gradient(to bottom, var(--primary), var(--secondary));
+  cursor: pointer;
+}

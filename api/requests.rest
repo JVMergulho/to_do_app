@@ -6,7 +6,7 @@ POST http://localhost:3001/todo/create
 Content-Type: application/json
 
 {
-    "text": "comer pizza"
+    "text": "comprar pizza"
 }
 
 ###

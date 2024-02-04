@@ -9,8 +9,6 @@ function App() {
 
   useEffect(() => {
     GetTodos()
-
-    console.log(todos)
   })
 
   const GetTodos = () => {
@@ -20,8 +18,37 @@ function App() {
       .catch(err => console.error("Error: ", err))
   }
 
+  const deleteTodo = async id => {
+    const data = await fetch(API_BASE + "/todo/delete/" + id, 
+    {method: "DELETE"})
+      .then(res => res.json())
+
+    setTodos(todos => todos.filter(todo => todo._id !== data._id))
+  }
+
+  const addTodo = async() => {
+    const data = await fetch(API_BASE + "/todo/create", {
+      method: "POST",
+      headers: {
+        "content-type":"application/json"
+      },
+      body: JSON.stringify({
+        text: newTodo
+      })
+    }).then(res => res.json())
+
+    setTodos([...todos, data])
+    setPopupactivate(false)
+    setNewTodo("")
+  }
+
+  const closePopup = () => {
+    setPopupactivate(false) 
+    setNewTodo("")
+  }
+
   const completeTodo = async id => {
-    const data = fetch(API_BASE + "/todo/complete/" + id)
+    const data = await fetch(API_BASE + "/todo/complete/" + id)
       .then(res => res.json())
 
     setTodos(todos => todos.map(todo => {
@@ -45,11 +72,29 @@ function App() {
 
             <div className="text">{todo.text}</div>
 
-            <div className="delete">x</div>
+            <div className="delete" onClick={() => deleteTodo(todo._id)}>x</div>
           </div>
         ))}
 
       </div>
+
+      <div className="addPopup" onClick={() => setPopupactivate(true)}>+</div>
+
+      {popupActivate ? (
+        <div className="popup">
+          <div className="closePopup" 
+          onClick={closePopup}>
+            x
+          </div>
+          <div className="content">
+            <h3>Crie uma tarefa</h3>
+            <input type="text" className="add-todo" 
+            value={newTodo}
+            onChange={e => setNewTodo(e.target.value)}/>
+          </div>
+          <div className="button" onClick={addTodo}>Criar</div>
+        </div>
+      ): ''}
     </div>
   );
 }
